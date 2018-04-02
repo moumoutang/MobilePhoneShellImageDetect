@@ -31,10 +31,19 @@ cv.readImage('./files/test.jpg', function(err, im) {
   height = im.height()
   ....
 ```
-第二步转变为灰度图像，canny算法提取边界：
+第二步转变为灰度图像，canny算法进行边缘检测：
+canny是个（古老）的算法，基本上也是图像处理的入门算法了，可惜我一个前端早就忘得差不多了
 ```javascript
   im.convertGrayscale()
   im_canny = im.copy();
   im_canny.canny(lowThresh, highThresh);
   im_canny.dilate(nIters);
 ```
+第三部提取边缘数据：
+```javascript
+  //这里是个数组，投机的取了最大面积的轮廓和最小面积的，全当大轮廓和手机的孔
+  contours = im_canny.findContours()
+```
+其实
+其实每个
+
