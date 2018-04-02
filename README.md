@@ -44,6 +44,31 @@ canny是个（古老）的算法，基本上也是图像处理的入门算法了
   //这里是个数组，投机的取了最大面积的轮廓和最小面积的，全当大轮廓和手机的孔
   contours = im_canny.findContours()
 ```
-其实
-其实每个
+其实每个contour都有很多方法，可以通过代码罗列出来：
+```javascript
+  [Function: point]
+  [Function: points]  // 所有的点
+  [Function: size]
+  [Function: cornerCount] // 角点检测
+  [Function: area]
+  [Function: arcLength] //周长
+  [Function: approxPolyDP] //多边形拟合
+  [Function: convexHull] //凸包
+  [Function: boundingRect] //外接矩形
+  [Function: minAreaRect] //最小包围矩形
+  [Function: fitEllipse] //应该是用椭圆或者圆形拟合
+  [Function: isConvex]
+  [Function: moments] //中心矩
+  [Function: hierarchy]//轮廓有一定的层次
+  [Function: serialize]
+  [Function: deserialize]
+```
+拿出每个轮廓的外接矩形，也就知道宽高了
+
+这里因为要计算border-radius，我们要计算外接矩形和手机壳的切点数据，就用了所有的点值位置进行了对比；
+border-radius的值其实就是一个边界的内切圆的宽比上整个手机壳宽度，或者用高度比也行，其实长宽比保持一样的，具体的大家可以去了解border-radius的原理；
+
+做的比较粗糙。。以后再改进吧
+
+![avatar](./tmp/detect-shapes.png)
 
